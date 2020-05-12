@@ -1,13 +1,13 @@
 version: '3'
 services:
   mysql:
-    image: 'mysql:latest'
-    container_name: bancosgp
+    image: mysql:5.7
+    container_name: sgp-mysql
     environment:
-      - MYSQL_DATABASE=bancosgp
+      - MYSQL_DATABASE=sgp
       - MYSQL_ROOT_PASSWORD=root
     volumes:
-      - ./bd/:/docker-entrypoint-initdb.d/
+      - ./scripts/:/docker-entrypoint-initdb.d/
     restart: always
     ports:
       - '3306:3306'

@@ -5,37 +5,38 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.validator.constraints.br.CPF;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
+@Table(name = "USUARIO")
 public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="ID")
     private Long id;
 
     @NotNull
+    @Column(name = "NOME")
     private String nome;
 
     @NotNull
-    @CPF
+    @Column(name = "CPF")
     private String cpf;
 
     @NotNull
+    @Column(name = "SENHA")
     private String senha;
 
     @NotNull
-    @Email
+    @Column(name = "EMAIL")
     private String email;
 
     @NotNull
-    private Boolean admin;
+    @Column(name = "ADMIN")
+    private Integer admin;
 }

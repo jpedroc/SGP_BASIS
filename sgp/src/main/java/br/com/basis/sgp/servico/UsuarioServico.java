@@ -8,10 +8,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
 public interface UsuarioServico {
 
-    public List<UsuarioDTO> listar(List<Usuario> usuarios);
+    public List<UsuarioDTO> listar();
 
     public UsuarioDTO cadastrar(UsuarioCadastroDTO usuarioCadastroDTO);
 

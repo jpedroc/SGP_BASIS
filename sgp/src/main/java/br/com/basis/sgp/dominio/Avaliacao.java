@@ -5,9 +5,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import java.util.Date;
 
 @Entity
 @Getter
@@ -17,21 +14,21 @@ public class Avaliacao {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @Column(name="ID", nullable = false)
     private Long id;
 
-    @NotNull
-    private Date data_avaliacao;
+    @Column(name="DATA_AVALIACAO", nullable = false)
+    private String data_avaliacao;
 
-    @NotNull
-    @Size(min = 0, max = 100)
+    @Column(name="APROVEITAMENTO", nullable = false)
     private Double aproveitamento;
 
     @ManyToOne
-    @JoinColumn(name = "id_candidato")
+    @JoinColumn(name = "ID_CANDIDATO", nullable = false)
     private Usuario candadidato;
 
     @ManyToOne
-    @JoinColumn(name = "id_prova")
+    @JoinColumn(name = "ID_PROVA", nullable = false)
     private Prova prova;
 
 }

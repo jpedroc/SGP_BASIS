@@ -1,35 +1,32 @@
 package br.com.basis.sgp.dominio;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
+@Table(name = "PROVA")
 public class Prova {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="ID", nullable = false)
     private Long id;
 
-    @NotNull
+    @Column(name="TITULO", nullable = false)
     private String titulo;
 
-    @NotNull
-    @Size(min = 0, max = 100)
+    @Column(name="PERCENTULA_APROVACAO", nullable = false)
     private Double percentual_aprovacao;
 
     @ManyToMany
     @JoinTable(
-            name="prova_questao",
-            joinColumns = @JoinColumn(name="id_prova"),
-            inverseJoinColumns = @JoinColumn(name="id_questao"))
+            name="PROVA_QUESTAO",
+            joinColumns = @JoinColumn(name="ID_PROVA" ,nullable = false),
+            inverseJoinColumns = @JoinColumn(name="ID_QUESTAO", nullable = false))
     private List<Questao> questoes = new ArrayList<>();
 }

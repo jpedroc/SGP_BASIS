@@ -11,11 +11,11 @@ import javax.validation.constraints.Size;
 
 @Getter
 @Setter
-@RequiredArgsConstructor
 public class UsuarioDTO {
 
     @NotNull
     private Long id;
+
     @NotNull
     @Size(min = 3, max = 80, message = "Nome inválido!")
     private String nome;
